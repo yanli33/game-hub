@@ -1,13 +1,14 @@
 import { useState ,useEffect} from "react"
-import apiClient from "../../services/api-client"
+import apiClient from "../services/api-client"
 import { CanceledError } from "axios"
 // import apiClient from "../../services/api-client"
 //客制化hook
-interface Game {
-    id: number
-    name: string
+export interface Game {
+    id: number;
+    name: string;
+    background_image: string ;//url
   }
-  interface FetchGameResponse {
+interface FetchGameResponse {
     count: number
     results: Game[]
 }
@@ -23,7 +24,8 @@ const useGames = ()=>{
         .catch((err) => {if (err instanceof CanceledError) return
             setError(err.message)})
 
-    },[])
+    })
+    // console.log(games)
     return {games,error}
 }
 export default useGames
