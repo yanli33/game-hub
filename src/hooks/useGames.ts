@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import useData from "./useData"
 import { Genre } from "./useGenres";
 // import apiClient from "../../services/api-client"
@@ -14,12 +15,12 @@ export interface Game {
   parent_platforms: { platform: Platform }[]
   metacritic: number
 }
-const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => 
+const useGames = (gameQuery:GameQuery) => 
   useData<Game>('/games', {
   params: { 
-    genres: selectedGenre?.id, 
-    platforms: selectedPlatform?.id } }, 
-  [selectedGenre?.id,selectedPlatform?.id])
+    genres: gameQuery.genre?.id, 
+    platforms: gameQuery.platform?.id } }, 
+  [gameQuery]) //一旦deps改变吗，就会执行
 
 
 export default useGames
