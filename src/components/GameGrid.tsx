@@ -11,7 +11,7 @@ const GameGrid = () => {
     <>
       {error && <Text>{error}</Text>}
       {/* 列响应式，媒体查询查询屏幕大小 */}
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} spacing={10}>
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} spacing={3}>
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer>
